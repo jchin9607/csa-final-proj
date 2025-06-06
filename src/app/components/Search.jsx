@@ -24,6 +24,7 @@ const Search = () => {
   const code = searchParams.get("code");
   const [access_token, setAccessToken] = useState("");
 
+  console.log(access_token);
   async function getTracks(search) {
     let trackList = [];
 
@@ -53,7 +54,10 @@ const Search = () => {
   const [tracks, setTracks] = useState([]);
 
   useEffect(() => {
-    if (value) {
+    if (value && open === true) {
+      if (value === "") {
+        setTracks([]);
+      }
       getTracks(value).then((data) => {
         setTracks(data);
       });
