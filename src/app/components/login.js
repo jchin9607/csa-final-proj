@@ -31,7 +31,10 @@ export const login = async (code) => {
 
   accessToken = response.data.access_token;
 
+  console.log(response.data);
   console.log(accessToken);
+  console.log(tokenUrl);
+  console.log(process.env.NEXT_PUBLIC_REDIRECT_URI);
 
   return accessToken;
 };
