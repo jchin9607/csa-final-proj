@@ -31,5 +31,7 @@ export const login = async (code) => {
 
   accessToken = response.data.access_token;
 
+  console.log(accessToken);
+
   return accessToken;
 };
