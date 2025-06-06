@@ -32,6 +32,8 @@ const Search = () => {
       setAccessToken(token);
     }
 
+    console.log(access_token);
+
     const tokenURL = `https://api.spotify.com/v1/search?q=${search}&type=track`;
 
     const response = await axios.get(tokenURL, {
@@ -39,6 +41,7 @@ const Search = () => {
         Authorization: `Bearer ${access_token}`,
       },
     });
+    console.log(response);
     trackList = response.data.tracks.items.map((track) => ({
       name: track.name,
       artist: track.artists[0].name,
