@@ -1,4 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    domains: ["i.scdn.co"],
+  },
+  experimental: {
+    useCache: true,
+  },
+};
 
 export default nextConfig;
