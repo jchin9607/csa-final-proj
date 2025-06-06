@@ -5,8 +5,8 @@ import qs from "qs";
 
 export const login = async (code) => {
   "use cache";
-  const clientId = process.env.NEXT_PUBLIC_CLIENT_ID;
-  const clientSecret = process.env.NEXT_PUBLIC_CLIENT_SECRET;
+  const clientId = process.env.CLIENT_ID;
+  const clientSecret = process.env.CLIENT_SECRET;
 
   const tokenUrl = "https://accounts.spotify.com/api/token";
   const headers = {
@@ -22,7 +22,7 @@ export const login = async (code) => {
   const data = {
     grant_type: "authorization_code",
     code: code,
-    redirect_uri: process.env.NEXT_PUBLIC_REDIRECT_URI,
+    redirect_uri: process.env.REDIRECT_URI,
   };
 
   let accessToken = "";
@@ -30,11 +30,6 @@ export const login = async (code) => {
   const response = await axios.post(tokenUrl, qs.stringify(data), headers);
 
   accessToken = response.data.access_token;
-
-  console.log(response.data);
-  console.log(accessToken);
-  console.log(tokenUrl);
-  console.log(process.env.NEXT_PUBLIC_REDIRECT_URI);
 
   return accessToken;
 };

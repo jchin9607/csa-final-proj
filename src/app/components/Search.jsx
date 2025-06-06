@@ -23,7 +23,7 @@ const Search = () => {
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
   const [access_token, setAccessToken] = useState("");
-  console.log(access_token);
+
   async function getTracks(search) {
     let trackList = [];
 
@@ -61,7 +61,6 @@ const Search = () => {
   }, [value]);
 
   async function playTrack(uri) {
-    console.log(uri);
     if (access_token === "") {
       const token = await login(code);
 
